@@ -43,7 +43,7 @@ app.get("/items", async (req, res) => {
   db.on("error", console.error.bind(console, "Connection Error:"));
   db.once("open", () => console.log("Connected to DB"));
 
-  const items = await Item.find({});
+  const items = await Item.find({}).sort({ timestamp: "asc" });
   res.json(items);
 });
 
@@ -52,7 +52,9 @@ app.get("/items/:asin", async (req, res) => {
   db.on("error", console.error.bind(console, "Connection Error:"));
   db.once("open", () => console.log("Connected to DB"));
 
-  const items = await Item.find({ parent_asin: req.params["asin"] });
+  const items = await Item.find({ parent_asin: req.params["asin"] }).sort({
+    timestamp: "asc",
+  });
   res.json(items);
 });
 

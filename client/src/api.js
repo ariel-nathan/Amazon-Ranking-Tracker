@@ -1,4 +1,4 @@
-const base_url = "https://node-amazon-rankings.herokuapp.com/";
+const base_url = "https://amazon-rankings-fetcher.herokuapp.com/";
 
 export const fetchItemsURL = `${base_url}items`;
 
